@@ -7,7 +7,7 @@ import { loggerMiddleware } from "./api/middlewares/logger-middleware";
 import { connectDB } from "./infrastructure/db";
 
 const server = express();
-server.use(cors({ origin: "http://localhost:5173" }));
+server.use(cors({ origin: true })); // Allow all origins for production
 
 server.use(loggerMiddleware);
 
