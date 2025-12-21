@@ -48,7 +48,7 @@ const ANOMALY_PATTERNS = [
 ];
 
 async function seedWithAnomalies() {
-  const serialNumber = "SU-0001";
+  const serialNumber = "SU-TEST-2024";
 
   try {
     await connectDB();
