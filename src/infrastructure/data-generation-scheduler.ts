@@ -72,7 +72,8 @@ export class DataGenerationScheduler {
         try {
           await this.generateRecordsForUnit(unit, today);
         } catch (error: any) {
-          console.error(`   Error generating data for unit ${unit._id}:`, error.message);
+          const displayName = unit?.name || unit?.serialNumber || unit?._id;
+          console.error(`   Error generating data for unit ${displayName}:`, error.message);
         }
       }
 
@@ -121,13 +122,16 @@ export class DataGenerationScheduler {
     });
 
     if (existingCount > 0) {
-      console.log(`   ⏭️  Skipping unit ${unit.name} - data already exists for ${date.toDateString()}`);
+      const displayName = unit?.name || unit?.serialNumber || unit?._id;
+      const dateStr = date.toDateString();
+      console.log(`   ⏭️  Skipping unit ${displayName} - data already exists for ${dateStr}`);
       return;
     }
 
     // Insert all records
     await EnergyGenerationRecord.insertMany(records);
-    console.log(`   ✅ Generated ${records.length} records for unit: ${unit.name}`);
+    const displayName = unit?.name || unit?.serialNumber || unit?._id;
+    console.log(`   ✅ Generated ${records.length} records for unit: ${displayName}`);
   }
 
   /**
