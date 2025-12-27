@@ -2,6 +2,7 @@ import cors from "cors";
 import "dotenv/config";
 import express from "express";
 import energyGenerationRecordRouter from "./api/energy-generation-record";
+import adminRouter from "./api/admin";
 import { globalErrorHandler } from "./api/middlewares/global-error-handling-middleware";
 import { loggerMiddleware } from "./api/middlewares/logger-middleware";
 import { connectDB } from "./infrastructure/db";
@@ -15,6 +16,7 @@ server.use(loggerMiddleware);
 server.use(express.json());
 
 server.use("/api/energy-generation-records", energyGenerationRecordRouter);
+server.use("/api/admin", adminRouter);
 
 server.use(globalErrorHandler);
 
