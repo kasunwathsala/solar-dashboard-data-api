@@ -10,6 +10,8 @@
     "generate:today": "ts-node src/infrastructure/generate-today.ts",
     "generate:historical": "ts-node src/infrastructure/generate-historical.ts",
     "check:data": "ts-node src/infrastructure/check-data.ts",
+    "check:deployed": "ts-node src/infrastructure/check-deployed-data.ts",
+    "fix:deployed": "ts-node src/infrastructure/fix-deployed-today.ts",
     "build": "npm install && tsc",
     "start": "node ./dist/index.js"
   },
